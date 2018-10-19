@@ -268,6 +268,7 @@ def execute_take(item_id):
     there is no such item in the room, this function prints
     "You cannot take that."
     """
+    found = False
 
     for item in current_room["items"]:
         if item_id == item["id"]: 
@@ -301,7 +302,7 @@ def execute_drop(item_id):
             weight = weight - int(single_inv_item["weight"])
             if weight < 0:
                 weight = 0
-            print("your weight is",weight)
+            #print("your weight is",weight)
             inventory.remove(single_inv_item)
             current_room["items"].append(single_inv_item)
             found = True
@@ -402,7 +403,9 @@ def main():
 )
         if len(current_room["items"]) == 6:
             victory = True
+            print("Your weight is 0")
             print("YOU HAVE WON!!!")
+            
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
